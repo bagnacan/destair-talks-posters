@@ -1,0 +1,31 @@
+\frametitle{\two}
+  \framesubtitle{Interactive tours - behind the scenes}
+  Tours are YAML files, containing dialogues' text, position, and click actions
+  \begin{lstlisting}
+    id: galaxy_ui
+    name: Galaxy UI
+    description: A gentle introduction to the Galaxy User Interface
+    title_default: Welcome to Galaxy
+
+    # A tour is made of several steps, each of them beginning with a dash '-'
+    steps:
+      # 'title's will be displayed in the header of each step-container
+      # If you don't specify any title, a default title is used, defined above.
+      - title: Welcome to Galaxy
+        # 'content' is the actual text that is shown to the user
+        content: This short tour guides you through the Galaxy user interface.<br/>
+        backdrop: true
+
+      # 'element' is the JQuery Selector of the element you want to describe
+      - title: Upload your data
+        element: ".upload-button"
+        intro: Galaxy supports many ways to get in your data.<br>
+               Use this button to upload your data.
+        # position of the text box relative to the selected element
+        position: right
+        # You can trigger click() events on arbitrary elements before (preclick)
+        # or after (postclick) the element is shown
+        postclick:
+          - .upload-button
+
+  \end{lstlisting}
